@@ -1,0 +1,47 @@
+mat-card {
+  max-width: 400px;
+  margin: 100px auto;
+
+  mat-card-header {
+    .centered-h1 {
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+
+  mat-card-content {
+    form {
+      mat-form-field {
+        margin-bottom: 20px;
+        width: 100%;
+
+        input {
+          width: 100%;
+
+          // Align mat-icon to the right side of the input field
+          &::-webkit-inner-spin-button,
+          &::-webkit-outer-spin-button {
+            margin-right: 24px;
+          }
+        }
+
+        mat-icon {
+          position: absolute;
+          right: 8px;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+        }
+      }
+
+      button {
+        margin-top: 20px;
+        margin-left: 10px;
+      }
+
+      a {
+        margin-top: 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-header>
+    <!-- Heading -->
+    <h1 class="centered-h1"><b>User Login</b></h1>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- LoginForm -->
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <!-- Username input field -->
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+      <!-- Password input field -->
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          type="{{ showPassword ? 'text' : 'password' }}"
+        />
+        <!-- Show password icon -->
+        <mat-icon (click)="togglePasswordVisibility()">
+          {{ showPassword ? "visibility_off" : "visibility" }}
+        </mat-icon>
+      </mat-form-field>
+      <!-- Login Button -->
+      <a routerLink="/auth/register" mat-raised-button color="accent"
+        >New User ?</a
+      >
+      <button mat-raised-button color="primary">Login</button>
+    </form>
+  </mat-card-content>
+</mat-card>

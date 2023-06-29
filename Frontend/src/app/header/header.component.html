@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <!-- Home icon -->
+  <mat-icon fontIcon="home"></mat-icon>
+  <!-- Navbar Heading -->
+  <span>Notice Board</span>
+
+  <!-- All Navigation endpoints. -->
+  <div class="toolbar-links" *ngIf="isLoggedIn">
+    <a *ngIf="isAdminUser" routerLink="/add-notice">Add Notice</a>
+    <a routerLink="/notice">Notice</a>
+    <a *ngIf="isAdminUser" routerLink="/user">User</a>
+    <a routerLink="/auth/login">Logout</a>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,71 @@
+<mat-card class="notice-card">
+  <!-- Heading -->
+  <h1 style="text-align: center"><b>Add Notice</b></h1>
+  <!-- Form -->
+  <form [formGroup]="noticeForm" (ngSubmit)="onAddNotice()">
+    <mat-card-content>
+      <!-- Title input field -->
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" placeholder="Enter the title" />
+        <!-- Title Error Message -->
+        <mat-error
+          *ngIf="
+            noticeForm.get('title')?.invalid && noticeForm.get('title')?.touched
+          "
+        >
+          Title is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Description textarea field -->
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          placeholder="Enter the description"
+        ></textarea>
+        <!-- Description Error Message -->
+        <mat-error
+          *ngIf="
+            noticeForm.get('description')?.invalid &&
+            noticeForm.get('description')?.touched
+          "
+        >
+          Description is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Date Picker for date -->
+      <mat-form-field appearance="outline">
+        <mat-label>Upload Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="uploadDate"
+          placeholder="Select the date"
+          date
+        />
+        <!-- Date Error Message -->
+        <mat-error
+          *ngIf="
+            noticeForm.get('uploadDate')?.invalid &&
+            noticeForm.get('uploadDate')?.touched
+          "
+        >
+          Date is required
+        </mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <!-- Submit button -->
+      <button mat-raised-button color="primary">Add</button>
+      <!-- Don't Add button -->
+      <button mat-raised-button color="warn" style="margin-left: 10px" (click)="onDontAdd()">
+        Don't Add
+      </button>
+    </mat-card-content>
+  </form>
+</mat-card>

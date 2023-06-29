@@ -1,0 +1,78 @@
+<mat-card class="example-card">
+  <!-- Dailog close icon -->
+  <button class="icon" mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-card-header>
+    <!-- Heading -->
+    <h1 class="heading"><b>Update Notice</b></h1>
+  </mat-card-header>
+  <!-- Form -->
+  <form [formGroup]="updateNoticeForm" (ngSubmit)="updateNotice()">
+    <mat-card-content>
+      <!-- Title input field -->
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" placeholder="Enter the title" />
+        <!-- Title error message -->
+        <mat-error
+          *ngIf="
+            updateNoticeForm.get('title')?.invalid &&
+            updateNoticeForm.get('title')?.touched
+          "
+        >
+          Title is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Description input field -->
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          placeholder="Enter the description"
+        ></textarea>
+        <!-- Description error message -->
+        <mat-error
+          *ngIf="
+            updateNoticeForm.get('description')?.invalid &&
+            updateNoticeForm.get('description')?.touched
+          "
+        >
+          Description is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Date input field -->
+      <mat-form-field appearance="outline">
+        <mat-label>Upload Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="uploadDate"
+          placeholder="Select the date"
+          date
+        />
+        <!-- Date error message -->
+        <mat-error
+          *ngIf="
+            updateNoticeForm.get('uploadDate')?.invalid &&
+            updateNoticeForm.get('uploadDate')?.touched
+          "
+        >
+          Date is required
+        </mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <!-- Update button -->
+      <button mat-raised-button color="primary">Update</button>
+      <!-- close button -->
+      <button mat-raised-button mat-dialog-close="true" color="warn">
+        Close
+      </button>
+    </mat-card-content>
+  </form>
+</mat-card>

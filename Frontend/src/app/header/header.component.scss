@@ -1,0 +1,29 @@
+mat-toolbar {
+  background-color: #1976d2;
+
+  mat-icon {
+    font-size: 24px;
+    color: white;
+    margin-right: 10px;
+  }
+
+  span {
+    font-size: 18px;
+    color: white;
+    margin-right: auto;
+  }
+
+  .toolbar-links {
+    a {
+      color: white;
+      text-decoration: none;
+      margin-left: 10px;
+      transition: color 0.3s ease;
+      font-size: 15px;
+
+      &:hover {
+        color: lighten(#1976d2, 10%);
+      }
+    }
+  }
+}

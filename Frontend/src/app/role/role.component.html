@@ -1,0 +1,48 @@
+<mat-card class="role-card">
+  <!-- Heading -->
+  <h1 style="text-align: center"><b>Add Role</b></h1>
+  <!-- Form -->
+  <form [formGroup]="roleForm" (ngSubmit)="onAddRole()">
+    <mat-card-content>
+      <!-- Role ID input field -->
+      <mat-form-field appearance="outline">
+        <mat-label>Role ID</mat-label>
+        <input matInput formControlName="id" placeholder="Enter the Role ID" />
+        <!-- Role ID Error Message -->
+        <mat-error
+          *ngIf="roleForm.get('id')?.invalid && roleForm.get('id')?.touched"
+        >
+          Role ID is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Role Name textarea field -->
+      <mat-form-field appearance="outline">
+        <mat-label>Role Name</mat-label>
+        <textarea
+          matInput
+          formControlName="name"
+          placeholder="Enter the Name"
+        ></textarea>
+        <!-- Role Name Error Message -->
+        <mat-error
+          *ngIf="roleForm.get('name')?.invalid && roleForm.get('name')?.touched"
+        >
+          Role Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Submit button -->
+      <button mat-raised-button color="primary">Add</button>
+      <!-- Don't Add button -->
+      <button
+        mat-raised-button
+        color="warn"
+        style="margin-left: 10px"
+        mat-dialog-close="true"
+      >
+        Don't Add
+      </button>
+    </mat-card-content>
+  </form>
+</mat-card>

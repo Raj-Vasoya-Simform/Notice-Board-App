@@ -1,0 +1,125 @@
+<div>
+  <!-- Heading -->
+  <h1 style="text-align: center"><b>Notice Board</b></h1>
+
+  <div>
+    <!-- Search input field -->
+    <input
+      class="search-input"
+      type="text"
+      [(ngModel)]="searchTitle"
+      placeholder="Search by Title"
+    />
+
+    <!-- Search button (inside the input field) -->
+    <mat-icon class="searchIcon" (click)="searchByTitle()">search</mat-icon>
+
+    <!-- List/Card toggle icon -->
+    <mat-icon class="icon-button" (click)="changeGrid()">{{
+      inListForm ? "dashboard" : "list"
+    }}</mat-icon>
+  </div>
+
+  <!-- Sort by date filter -->
+  <mat-drawer-container class="left-align" autosize>
+    <mat-drawer #drawer class="drawer" mode="side">
+      <a class="sortByDate" (click)="sortNoticesByDate()"> Sort by Date </a>
+    </mat-drawer>
+
+    <div>
+      <button
+        class="sidenav"
+        type="button"
+        mat-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon class="toggle" (click)="drawer.toggle()"
+          >filter_list</mat-icon
+        >
+      </button>
+    </div>
+  </mat-drawer-container>
+</div>
+<hr />
+
+<!-- Card grid list -->
+<mat-grid-list class="grid-list" cols="5" rowHeight="5:4" *ngIf="!inListForm">
+  <mat-grid-tile *ngFor="let notice of searchList">
+    <div class="grid">
+      <mat-card class="card">
+        <mat-card-header>
+          <!-- Title -->
+          <mat-card-title>{{ notice.title }}</mat-card-title>
+          <div class="date-field">
+            <!-- Date -->
+            <p>
+              <b>{{ notice.uploaddate | date }}</b>
+            </p>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <!-- Description -->
+          <span>
+            {{ notice.description }}
+          </span>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- Update button -->
+          <button
+            *ngIf="isAdminUser"
+            mat-raised-button
+            color="primary"
+            (click)="updateNotice(notice.id)"
+          >
+            Update
+          </button>
+          <!-- Delete button -->
+          <button
+            *ngIf="isAdminUser"
+            class="btn-delete"
+            mat-raised-button
+            color="warn"
+            (click)="deleteNotice(notice.id)"
+          >
+            Delete
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<!-- Notice List  -->
+<ng-container *ngIf="inListForm">
+  <mat-list>
+    <mat-list-item *ngFor="let notice of searchList">
+      <span matListItemTitle
+        ><b>{{ notice.title }}</b></span
+      >
+      <span matListItemLine style="color: red">{{
+        notice.uploaddate | date
+      }}</span>
+      {{ notice.description }}
+
+      <!-- Delete button -->
+      <mat-icon
+        class="move-right"
+        (click)="deleteNotice(notice.id)"
+        color="warn"
+        *ngIf="isAdminUser"
+        >delete</mat-icon
+      >
+
+      <!-- Update button -->
+      <mat-icon
+        class="move-right"
+        (click)="updateNotice(notice.id)"
+        color="primary"
+        *ngIf="isAdminUser"
+        >create</mat-icon
+      >
+
+      <hr class="custom-hr" />
+    </mat-list-item>
+  </mat-list>
+</ng-container>

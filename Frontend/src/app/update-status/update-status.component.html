@@ -1,0 +1,45 @@
+<mat-card class="update-card">
+  <!-- dialog close icon -->
+  <button class="icon" mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-card-header>
+    <!-- Heading -->
+    <h1 class="heading"><b>Update User</b></h1>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- Form -->
+    <form [formGroup]="updatedForm" (ngSubmit)="updateUser()">
+      <!-- Role select option field -->
+      <mat-form-field appearance="outline">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option value="">Select Role</mat-option>
+          <mat-option
+            *ngFor="let item of roleList | keyvalue"
+            [value]="item.value.id"
+          >
+            {{ item.value.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <!-- User activation field -->
+        <mat-checkbox
+          name="isActive"
+          formControlName="isActive"
+          class="active-check"
+          >Activate User</mat-checkbox
+        >
+      </div>
+      <div class="btn">
+        <!-- Update button for user o update -->
+        <button class="update-button" mat-raised-button color="primary">
+          Update
+        </button>
+        <!-- Dialog close button -->
+        <button mat-dialog-close mat-raised-button color="accent">Close</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

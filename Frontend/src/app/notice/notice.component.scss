@@ -1,0 +1,172 @@
+hr {
+  margin: 0;
+}
+
+.grid {
+  margin: 5px;
+  width: 100%;
+}
+
+mat-card.card {
+  background: lightblue;
+  width: 100%;
+
+  mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    mat-card-title {
+      flex: 1;
+    }
+
+    .date-field {
+      font-size: 16px;
+      text-align: right;
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn-delete {
+    margin: 10px;
+  }
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  input[type="text"] {
+    width: 300px;
+    padding: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  button {
+    height: 36px;
+    min-width: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    mat-icon {
+      font-size: 18px;
+    }
+  }
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .sort-button {
+    margin-left: auto;
+    margin-right: 10px;
+    font-weight: bold;
+    width: 100%;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken(#5b8df2, 10%);
+    }
+  }
+
+  // Search input field
+  .search-input {
+    position: relative;
+    width: 300px;
+    height: 36px;
+    padding: 6px 40px 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  // Search button (inside the input field)
+  .searchIcon {
+    position: absolute;
+    top: 14.5%;
+    transform: translateX(635%);
+    cursor: pointer;
+  }
+}
+
+hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.icon-button {
+  cursor: pointer;
+  position: absolute;
+  right: 3%;
+  top: 22%;
+  font-size: 25px;
+}
+.left-align {
+  left: -45.5%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sortByDate {
+  cursor: pointer;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.drawer {
+  align-items: center;
+}
+
+
+.sortByDate:hover {
+  color: blue;
+}
+
+.move-right {
+  float: right;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.custom-list-item {
+  position: relative;
+}
+
+.custom-hr {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin: 0;
+}
+
+.sidenav {
+  height: 50px;
+}
